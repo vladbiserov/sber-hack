@@ -1,0 +1,501 @@
+[
+  {
+    "indicator_code": "8112013",
+    "feature_key": "population_mean",
+    "view": "demography",
+    "role": "support",
+    "transformation": "population",
+    "priority": 1,
+    "load_default": true,
+    "why": "Среднегодовое население — согласованный знаменатель годовых потоков.",
+    "caution": "Исторические изменения границ; не заменять запасом на 1 января автоматически.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год"
+    ]
+  },
+  {
+    "indicator_code": "8112027",
+    "feature_key": "population_jan",
+    "view": "demography",
+    "role": "support",
+    "transformation": "population",
+    "priority": 2,
+    "load_default": true,
+    "why": "Население на 1 января для масштаба, плотности и проверки демографических изменений.",
+    "caution": "Запас на дату; отдельно от среднегодовой численности.",
+    "dimension_filters": {
+      "mest": "Все население"
+    },
+    "period_preference": [
+      "На 1 января",
+      "Значение показателя за год"
+    ]
+  },
+  {
+    "indicator_code": "8006001",
+    "feature_key": "land_area_ha",
+    "view": "demography",
+    "role": "support",
+    "transformation": "area",
+    "priority": 3,
+    "load_default": true,
+    "why": "Плотность расселения: площадь в гектарах конвертируется в км².",
+    "caution": "Абсолютную площадь не смешивать с интенсивностями без отдельной гипотезы.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8423007",
+    "feature_key": "wage",
+    "view": "labor",
+    "role": "primary",
+    "transformation": "level",
+    "priority": 4,
+    "load_default": true,
+    "why": "Уровень оплаты труда дополняет структуру потребительских расходов.",
+    "caution": "Без малого бизнеса; номинальная зарплата не является полным доходом жителей.",
+    "dimension_filters": {
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8423005",
+    "feature_key": "employment",
+    "view": "labor",
+    "role": "primary",
+    "transformation": "per_1000",
+    "priority": 5,
+    "load_default": true,
+    "why": "Интенсивность формальной занятости на 1000 жителей.",
+    "caution": "Без малого бизнеса; рабочие места по месту организации, это не доля занятых жителей.",
+    "dimension_filters": {
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8090001",
+    "feature_key": "reporting_companies",
+    "view": "business",
+    "role": "primary",
+    "transformation": "per_1000",
+    "priority": 6,
+    "load_default": true,
+    "why": "Плотность отчитывающихся хозяйствующих субъектов; новый раздел 46.",
+    "caution": "Это отчитавшиеся организации, не все зарегистрированные компании и ИП.",
+    "dimension_filters": {
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_jan"
+  },
+  {
+    "indicator_code": "8090008",
+    "feature_key": "profitable_share",
+    "view": "business",
+    "role": "primary",
+    "transformation": "percent",
+    "priority": 7,
+    "load_default": true,
+    "why": "Доля прибыльных организаций: интенсивность без эффекта размера МО.",
+    "caution": "Бухгалтерская отчётность; не смешивать с обследованием раздела 42.",
+    "dimension_filters": {
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "7000005",
+    "feature_key": "company_revenue",
+    "view": "business",
+    "role": "candidate",
+    "transformation": "per_capita",
+    "priority": 8,
+    "load_default": false,
+    "why": "Масштаб деловой активности на жителя из бухгалтерской отчётности.",
+    "caution": "Расположение головных организаций и крупные выбросы; вероятна корреляция с числом фирм.",
+    "dimension_filters": {
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8109001",
+    "feature_key": "investment_total",
+    "view": "investment",
+    "role": "primary",
+    "transformation": "per_capita",
+    "priority": 9,
+    "load_default": true,
+    "why": "Полные инвестиции организаций, а не только средства местного бюджета.",
+    "caution": "Без малого бизнеса; годовые всплески, номинальные рубли.",
+    "dimension_filters": {
+      "istinv": "Всего",
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8109003",
+    "feature_key": "private_investment_pc",
+    "view": "investment",
+    "role": "alternative",
+    "transformation": "level",
+    "priority": 10,
+    "load_default": false,
+    "why": "Прямая интенсивность внебюджетных инвестиций; альтернатива общим инвестициям.",
+    "caution": "Другой состав инвестиций; не считать дубликатом общего итога.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8019014",
+    "feature_key": "income_payments",
+    "view": "income",
+    "role": "candidate",
+    "transformation": "per_capita",
+    "priority": 11,
+    "load_default": false,
+    "why": "Социальные выплаты и налогооблагаемые денежные доходы на жителя расширяют контекст благосостояния.",
+    "caution": "Не полные располагаемые доходы и не медианный доход.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8211001",
+    "feature_key": "housing_area_pc",
+    "view": "living",
+    "role": "candidate",
+    "transformation": "level",
+    "priority": 12,
+    "load_default": false,
+    "why": "Обеспеченность жильём на жителя — отдельная характеристика среды.",
+    "caution": "Большая площадь не обязательно означает высокое качество жилья.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8215001",
+    "feature_key": "housing_new_pc",
+    "view": "development",
+    "role": "candidate",
+    "transformation": "level",
+    "priority": 13,
+    "load_default": false,
+    "why": "Жилищное строительство на жителя как динамика развития.",
+    "caution": "Нули сохраняются; годовые всплески и неполное покрытие.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8002002",
+    "feature_key": "shop_floor",
+    "view": "retail_supply",
+    "role": "primary",
+    "transformation": "per_capita",
+    "priority": 14,
+    "load_default": true,
+    "why": "Площадь торговых залов магазинов на жителя отражает физическое предложение торговли.",
+    "caution": "Только «Магазины»; вложенные типы не суммируются. Годовой итог или IV квартал как запас на конец года.",
+    "dimension_filters": {
+      "obroz": "Магазины"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "IV квартал"
+    ],
+    "denominator": "population_jan"
+  },
+  {
+    "indicator_code": "8801004",
+    "feature_key": "food_sales",
+    "view": "consumer_official",
+    "role": "candidate",
+    "transformation": "per_capita",
+    "priority": 15,
+    "load_default": false,
+    "why": "Реализация продовольственных товаров на жителя — внешняя проверка Сбер-структуры.",
+    "caution": "Может дублировать потребительский view; сначала использовать для интерпретации кластеров.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8006003",
+    "feature_key": "lit_street_km",
+    "view": "infrastructure",
+    "role": "support",
+    "transformation": "numerator",
+    "priority": 16,
+    "load_default": true,
+    "why": "Числитель доли освещённых улиц.",
+    "caution": "Использовать с общей длиной улиц при одинаковой единице, не отдельно.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8006007",
+    "feature_key": "street_km",
+    "view": "infrastructure",
+    "role": "support",
+    "transformation": "denominator",
+    "priority": 17,
+    "load_default": true,
+    "why": "Знаменатель доли освещённых улиц.",
+    "caution": "Нулевой знаменатель даёт пропуск; не считать отсутствием освещения.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8106005",
+    "feature_key": "bad_roads_share",
+    "view": "infrastructure",
+    "role": "candidate",
+    "transformation": "percent",
+    "priority": 18,
+    "load_default": false,
+    "why": "Качество дорожной инфраструктуры, отдельное от транспортных расстояний Сбера.",
+    "caution": "Различия отчётности и неполное покрытие.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8313015",
+    "feature_key": "fiscal_own_share",
+    "view": "fiscal",
+    "role": "candidate",
+    "transformation": "percent",
+    "priority": 19,
+    "load_default": false,
+    "why": "Действующий показатель фискальной самостоятельности взамен устаревшего раздела 13.",
+    "caution": "Доля в собственных доходах без субвенций, не в общем доходе бюджета.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8060001",
+    "feature_key": "accommodation_count",
+    "view": "tourism",
+    "role": "candidate",
+    "transformation": "per_1000",
+    "priority": 20,
+    "load_default": false,
+    "why": "Плотность коллективных средств размещения для туристической специализации.",
+    "caution": "Пропуск не означает отсутствие туризма; отдельный дополнительный view.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_jan"
+  },
+  {
+    "indicator_code": "7000004",
+    "feature_key": "tourism_nights",
+    "view": "tourism",
+    "role": "candidate",
+    "transformation": "per_capita",
+    "priority": 21,
+    "load_default": false,
+    "why": "Туристическая интенсивность по ночёвкам, новая содержательная проверка сезонности.",
+    "caution": "Слабое покрытие может делать общий 2016-объектный view непригодным.",
+    "dimension_filters": {
+      "vozr": "Всего"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8007013",
+    "feature_key": "agriculture_index",
+    "view": "agriculture",
+    "role": "candidate",
+    "transformation": "index",
+    "priority": 22,
+    "load_default": false,
+    "why": "Индекс сельхозпроизводства в сопоставимых ценах вместо размера выпуска.",
+    "caution": "Специализированный сельский контекст; не импутировать городам автоматически.",
+    "dimension_filters": {
+      "kategor": "Хозяйства всех категорий"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8401003",
+    "feature_key": "retail_turnover",
+    "view": "consumer_official",
+    "role": "alternative",
+    "transformation": "per_capita",
+    "priority": 23,
+    "load_default": false,
+    "why": "Оборот розницы как дополнительная внешняя проверка расходов.",
+    "caution": "Без малого бизнеса; не включать автоматически рядом со Сбером и продажами продовольствия.",
+    "dimension_filters": {
+      "okved2": "Всего по обследуемым видам экономической деятельности"
+    },
+    "period_preference": [
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "8002001",
+    "feature_key": "shop_count",
+    "view": "retail_supply",
+    "role": "alternative",
+    "transformation": "per_1000",
+    "priority": 24,
+    "load_default": false,
+    "why": "Число магазинов на 1000 жителей как альтернатива торговой площади.",
+    "caution": "Выбрать один из двух коррелирующих признаков предложения торговли.",
+    "dimension_filters": {
+      "obroz": "Магазины"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "IV квартал"
+    ],
+    "denominator": "population_jan"
+  },
+  {
+    "indicator_code": "8014006",
+    "feature_key": "preschool_share",
+    "view": "social",
+    "role": "candidate",
+    "transformation": "percent",
+    "priority": 25,
+    "load_default": false,
+    "why": "Доступность дошкольной услуги как отдельная социальная характеристика.",
+    "caution": "Возрастная база 1–6 лет, особенности муниципальной сети; не общая обеспеченность образованием.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8005005",
+    "feature_key": "waste_volume",
+    "view": "utilities",
+    "role": "diagnostic",
+    "transformation": "per_capita",
+    "priority": 26,
+    "load_default": false,
+    "why": "Объём вывезенных отходов — кандидат для проверки, не прямой показатель благосостояния.",
+    "caution": "Сильно зависит от учёта и туристов, неполная сопоставимость; не основной набор.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_mean"
+  },
+  {
+    "indicator_code": "9010004",
+    "feature_key": "equipped_housing",
+    "view": "utilities",
+    "role": "candidate",
+    "transformation": "numerator",
+    "priority": 27,
+    "load_default": false,
+    "why": "Площадь благоустроенного жилья для доли в общей жилой площади.",
+    "caution": "Необходим согласованный знаменатель и одинаковый период; исключить ошибочную месячную метку.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год"
+    ]
+  },
+  {
+    "indicator_code": "8008019",
+    "feature_key": "housing_stock",
+    "view": "utilities",
+    "role": "support_optional",
+    "transformation": "denominator",
+    "priority": 28,
+    "load_default": false,
+    "why": "Знаменатель доли благоустроенного жилищного фонда.",
+    "caution": "Только весь жилищный фонд; значение ND не является итогом.",
+    "dimension_filters": {
+      "schil": "Весь жилищный фонд"
+    },
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ]
+  },
+  {
+    "indicator_code": "8018000",
+    "feature_key": "health_facilities",
+    "view": "social",
+    "role": "diagnostic",
+    "transformation": "per_1000",
+    "priority": 29,
+    "load_default": false,
+    "why": "Обеспеченность лечебно-профилактическими организациями — проверяемый дополнительный кандидат.",
+    "caution": "Число организаций без мощности и качества слабо отражает доступность медицины.",
+    "dimension_filters": {},
+    "period_preference": [
+      "Значение показателя за год",
+      "Январь-декабрь"
+    ],
+    "denominator": "population_jan"
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "source_page": "https://tochno.st/datasets/bdmo",
+  "history_years": [
+    2023,
+    2024
+  ],
+  "focus_years": [
+    2023,
+    2024
+  ],
+  "core_min_coverage": 0.9,
+  "sensitivity_min_coverage": 0.6,
+  "min_trend_points": 4,
+  "request_timeout": 120,
+  "csv_chunk_size": 250000,
+  "output_dir": "outputs/bdmo_v3",
+  "indicator_overrides": {},
+  "cache_dir": "data/cache/bdmo",
+  "base_panel": "outputs/base/X_consumer.parquet",
+  "mapping_path": "data/territory_oktmo.csv",
+  "expected_municipalities": 2016,
+  "calendar": {
+    "start": "2023-01",
+    "end": "2024-12"
+  },
+  "download_attempts": 3,
+  "annual_periods": [
+    "Значение показателя за год",
+    "Январь-декабрь",
+    "Год",
+    "Annual",
+    "Year"
+  ],
+  "metadata_columns": [
+    "indicator_section_code",
+    "indicator_section",
+    "indicator_code",
+    "region_id",
+    "mun_level",
+    "mun_district",
+    "mun_type_oktmo",
+    "oktmo_stable",
+    "oktmo_history",
+    "oktmo_year_from",
+    "oktmo_year_to",
+    "comment"
+  ],
+  "dimension_filters": {},
+  "indicator_plan": "configs/indicator_plan.json",
+  "reference_snapshot": "data/bdmo_reference.json",
+  "local_exports": [
+    "data/reviewed_raw",
+    "data/raw/bdmo",
+    "data/bdmo_export"
+  ],
+  "previous_shortlist_codes": [
+    "8123007",
+    "8423007",
+    "8123005",
+    "8423005",
+    "8009001",
+    "8109002",
+    "8013001",
+    "8013015",
+    "8013004",
+    "8013002",
+    "8201001",
+    "8401011",
+    "8401007",
+    "8042018",
+    "8942018",
+    "8007010",
+    "8106005",
+    "8155001",
+    "8215001",
+    "8211001",
+    "7000003",
+    "7000004"
+  ]
+}

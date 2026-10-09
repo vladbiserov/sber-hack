@@ -1,0 +1,211 @@
+{
+  "feature_path": "outputs/bdmo_v3/features/X_consumer_24m.parquet",
+  "graph_directory": "outputs/bdmo_v3/graphs_step06",
+  "output_directory": "outputs/bdmo_v3/clustering_step07",
+  "zero_floor": 1e-06,
+  "seeds": [
+    11,
+    42,
+    73
+  ],
+  "silhouette_sample_size": 500,
+  "pilot_month_indices": [
+    0,
+    7,
+    15,
+    23
+  ],
+  "candidate_parameters": {
+    "kmeans": [
+      4,
+      6,
+      8,
+      10
+    ],
+    "spectral": [
+      4,
+      6,
+      8,
+      10
+    ],
+    "leiden": [
+      0.3,
+      0.5,
+      0.8,
+      1.2,
+      1.8
+    ]
+  },
+  "selection_note": "Подбор параметров по пилотным месяцам, без автоматического объявления глобального победителя",
+  "annual_07a": {
+    "annual_path": "outputs/bdmo_v3/features/X_annual_core_raw.parquet",
+    "interpretation_snapshots": [
+      [
+        "2023-12",
+        2023
+      ],
+      [
+        "2024-12",
+        2024
+      ]
+    ],
+    "methods": [
+      "kmeans",
+      "leiden",
+      "spectral"
+    ],
+    "attribution_month": "2024-12",
+    "lagged_annual_year": 2023,
+    "alpha_values": [
+      1.0,
+      0.75,
+      0.5,
+      0.25
+    ],
+    "minimum_complete_cases": 500,
+    "output_subdir": "annual_07a",
+    "publication_dates_verified": false,
+    "note": "B - только ретроспективная чувствительность; без подтверждения дат публикации нельзя считать as-of оценкой или использовать для динамической сети."
+  },
+  "temporal_08": {
+    "base_method": "kmeans",
+    "graph_beta": 0.15,
+    "lambda_values": [
+      0.0,
+      0.25,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "matching_min_jaccard": 0.0,
+    "event_min_fraction": 0.1,
+    "event_min_size": 10,
+    "stable_cluster_jaccard": 0.5,
+    "delta_path": "outputs/bdmo_v3/features/X_annual_core_delta.parquet",
+    "output_directory": "outputs/bdmo_v3/temporal_step08",
+    "selection": 0.25,
+    "notes": "Retrospective; lambda 0 is graph-anchored reference, distinct from independent K-Means. Choose selection only after examining results. X_delta is explanatory, not input to partition."
+  },
+  "validation_09": {
+    "include_temporal_if_saved": true,
+    "feature_space": "monthly_clr",
+    "graph_space": "selected_graphs_step06",
+    "silhouette": "exact_all_municipalities",
+    "s_dbw_variant": "Halkidi_original_euclidean",
+    "unverified_official_metrics": [
+      "AVI",
+      "AVU",
+      "MQ"
+    ],
+    "output_file": "outputs/bdmo_v3/validation_step09/validation_metrics.parquet",
+    "note": "Не рассчитывать AVI, AVU и MQ как конкурсные до получения официальных формул; этапы 07–08 не переобучаются."
+  },
+  "interpretation_10": {
+    "model": "temporal_kmeans",
+    "snapshots": [
+      [
+        "2023-12",
+        2023
+      ],
+      [
+        "2024-12",
+        2024
+      ]
+    ],
+    "representatives_month": "2024-12",
+    "representatives_per_cluster": 4,
+    "top_distinctive_per_family": 3,
+    "minimum_observed_per_indicator": 20,
+    "minimum_coverage_per_indicator": 0.5,
+    "annual_path": "outputs/bdmo_v3/features/X_annual_core_raw.parquet",
+    "delta_path": "outputs/bdmo_v3/features/X_annual_core_delta.parquet",
+    "municipality_lookup_path": null,
+    "municipality_id_column": null,
+    "municipality_name_column": null,
+    "region_column": null,
+    "output_directory": "outputs/bdmo_v3/interpretation_step10",
+    "save_enabled": true,
+    "note": "Имена/регионы требуют проверенного справочника; названия типов только после outputs. Годовой контекст ex-post; не входил в модель."
+  },
+  "selected_parameters": {
+    "kmeans": 4,
+    "spectral": 4,
+    "leiden": 0.3
+  },
+  "robustness_11": {
+    "reference_model": "temporal_kmeans",
+    "pilot_month_indices": [
+      0,
+      7,
+      15,
+      23
+    ],
+    "baseline_k": 10,
+    "graph_k_neighbors": [
+      8,
+      12
+    ],
+    "test_lambda": [
+      0.0,
+      0.25,
+      0.5
+    ],
+    "seeds": [
+      11,
+      42,
+      73
+    ],
+    "annual_snapshot": "2024-12",
+    "annual_lagged_year": 2023,
+    "annual_min_complete_cases": 500,
+    "annual_alphas": [
+      1.0,
+      0.75,
+      0.5
+    ],
+    "final_selection": "temporal_clr_k10_lambda_0.25",
+    "save_enabled": true,
+    "output_directory": "outputs/bdmo_v3/final_step11",
+    "note": "Настройки проверок устойчивости и выбора финальной модели. Публикационное сохранение включать после сверки пересчитанных результатов с ранее утверждёнными."
+  },
+  "graph_ablation_12": {
+    "reference_final_directory": "outputs/bdmo_v3/final_step11",
+    "beta_values": [
+      0.0,
+      0.05,
+      0.15,
+      0.3
+    ],
+    "primary_comparison": [
+      0.0,
+      0.15
+    ],
+    "lambda_fixed": 0.25,
+    "seeds": [
+      11,
+      42,
+      73
+    ],
+    "pilot_month_indices": [
+      0,
+      7,
+      15,
+      23
+    ],
+    "annual_snapshots": [
+      [
+        "2023-12",
+        2023
+      ],
+      [
+        "2024-12",
+        2024
+      ]
+    ],
+    "top_unstable_months": 5,
+    "output_directory": "outputs/bdmo_v3/graph_ablation_step12",
+    "save_enabled": false,
+    "selection": null,
+    "note": "Контролируемая ретроспективная абляция графового штрафа. Сохранять решение и менять финальную модель только после проверки outputs. Официальные AVI/AVU/MQ не рассматриваются."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "source_page": "https://sberindex.ru/ru/research/data-sense-opisanie-nabora-dannikh-khakatona-sberindeksa-po-munitsipalnim-dannim",
+  "raw_dir": "data/raw",
+  "output_dir": "outputs/base",
+  "calendar": {
+    "start": "2023-01-01",
+    "end": "2024-12-01",
+    "freq": "MS"
+  },
+  "files": {
+    "consumption": "consumption.parquet",
+    "market_access": "market_access.parquet",
+    "connection": "connection.parquet"
+  },
+  "urls": {}
+}

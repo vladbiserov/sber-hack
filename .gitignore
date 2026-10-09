@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+*.log
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Download caches
+data/cache/
+
+# Source datasets: publish only after checking permissions
+data/raw/
+data/reviewed_raw/

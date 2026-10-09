@@ -1,0 +1,17 @@
+{
+  "feature_path": "outputs/bdmo_v3/features/X_consumer_24m.parquet",
+  "output_directory": "outputs/bdmo_v3/graphs_step06",
+  "representations": ["raw", "clr"],
+  "window_lengths": [1, 3],
+  "methods": ["union", "mutual", "cosine"],
+  "k_values": [5, 10, 15, 20, 30],
+  "zero_floor": 1e-6,
+  "random_state": 42,
+  "selection": {
+    "method": "union",
+    "representation": "clr",
+    "window": 1,
+    "k": 10
+  },
+  "notes": "По результатам сравнения 240 графов выбрана конфигурация CLR + union kNN, k=10, окно 1 месяц. Получена связная сеть во всех 24 месяцах. Значение k=15 рекомендуется для контрольного анализа чувствительности кластеризации. Годовые признаки X_annual и изменения X_delta не включаются в построение ребер на этапе 06."
+}

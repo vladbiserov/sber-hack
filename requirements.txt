@@ -1,0 +1,14 @@
+numpy
+pandas
+pyarrow
+requests
+beautifulsoup4
+openpyxl
+jupyter
+xlrd
+nbformat
+matplotlib
+scipy
+scikit-learn
+python-igraph
+leidenalg
