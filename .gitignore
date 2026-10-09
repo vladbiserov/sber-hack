@@ -16,7 +16,3 @@ __pycache__/
 
 # Download caches
 data/cache/
-
-# Source datasets: publish only after checking permissions
-data/raw/
-data/reviewed_raw/
