@@ -24,7 +24,7 @@
 Доли расходов являются композиционными данными: их сумма равна единице, а изменение одной компоненты связано с остальными. Поэтому наряду с исходными долями (`raw`) проверено преобразование *centered log-ratio* (CLR):
 
 $$
-\operatorname{clr}(\mathbf x)_k=\ln\frac{x_k}{g(\mathbf x)},
+\textit{clr}(\mathbf x)_k=\ln\frac{x_k}{g(\mathbf x)},
 \qquad g(\mathbf x)=\left(\prod_{k=1}^{6}x_k\right)^{1/6}.
 $$
 
